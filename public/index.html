@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>チャット画面</title>
+  </head>
+  <body>
+    <div id="app">
+
+        <!-- 吹き出しの始まり -->
+        <ul id="chats">
+            <li v-for="chat in chats">
+
+                <!-- メッセージ系 -->
+                <div class="sb-box" v-if="chat.type === 'message'">
+                    <div class="icon-img" :class="'icon-img' + addLeftOrRight(chat.name)">
+                        <img src="img/ico_default_blue.png">
+                    </div><!-- /.icon-img -->
+                    <div class="icon-name" :class="'icon-name' + addLeftOrRight(chat.name)">
+                        {{ chat.name }}
+                    </div>
+                    <div class="sb-side" :class="'sb-side' + addLeftOrRight(chat.name)">
+                        <div class="sb-txt" :class="'sb-txt' + addLeftOrRight(chat.name)">
+                            {{ chat.text }}
+                        </div><!-- /.sb-txt -->
+                    </div><!-- /.sb-side -->
+                </div><!-- /.sb-box -->
+
+                <!-- 通知系 -->
+                <div class="notice-box" v-if="chat.type === 'notice'">
+                    <p class="notice-txt">{{ chat.text }}</p>
+                </div>
+
+            </li>
+        </ul>
+        <!-- 吹き出しの終わり -->
+
+        <form action="">
+            <div id="bms_send">
+                <textarea id="bms_send_message" v-model="textInput"></textarea>
+                <div id="bms_send_btn" v-on:click.prevent="sendMessage">送信</div>
+            </div>
+        </form>
+
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/websocket.js"></script>
+    <script src="js/vue-chat.js"></script>
+  </body>
+</html>
