@@ -57,13 +57,13 @@
   /* 吹き出し内のテキスト */
   .sb-txt {
     position: relative;
-    border: 2px solid #eee; /* 吹き出しの縁取りの太さとカラー */
     border-radius: 6px; /* 吹き出しを角丸に */
     background: #fff; /* 吹き出しの背景色 */
     color: #333; /* 吹き出し内のテキストのカラー */
     font-size: 15px; /* 吹き出し内のフォントサイズ */
     line-height: 1.7; /* 吹き出し内のテキストが2行以上になった時の行間 */
     padding: 18px; /* 吹き出し内の上下左右の余白 */
+    white-space: pre-wrap;
   }
   .sb-txt > p:last-of-type {
     padding-bottom: 0; /* 吹き出し内のテキストを改行した場合、最後のpタグにpadding-bottomをつけない */
@@ -84,11 +84,14 @@
     top: 15px; /* beforeより-1px */
     z-index: 2; /* beforeより-1 */
   }
+  .sb-txt-left {
+    border: 2px solid #d1d1d1;
+  }
   /* 吹き出しの三角（左） */
   .sb-txt-left:before {
-    left: -7px;
+    left: -10px;
     border-width: 7px 10px 7px 0;
-    border-color: transparent #fff transparent transparent; /* 背景色と同じカラーに */
+    border-color: transparent #d1d1d1 transparent transparent; /* 背景色と同じカラーに */
   }
   .sb-txt-left:after {
     left: -10px; /* beforeより-3px */
@@ -96,13 +99,13 @@
     border-color: transparent #eee transparent transparent; /* 縁取りと同じカラーに */
   }
   .sb-txt-right {
-    background-color: #72f263;
+    border: 2px solid #5bc8ac;
   }
   /* 吹き出しの三角（右） */
   .sb-txt-right:before {
-    right: -7px;
+    right: -10px;
     border-width: 7px 0 7px 10px;
-    border-color: transparent transparent transparent #72f263; /* 背景色と同じカラーに */
+    border-color: transparent transparent transparent #5bc8ac; /* 背景色と同じカラーに */
   }
   .sb-txt-right:after {
     right: -10px; /* beforeより-3px */
@@ -138,15 +141,16 @@
       float: right;/*bms_sendに対して右寄せ*/
       color: #fff;
       font-weight: bold;
-      background: #bcbcbc;
       text-align: center;/*文字をボタン中央に表示*/
       border: 1px solid #bbb;
       border-radius: 4px;/*角丸*/
       box-sizing: border-box;/*paddingとborderの要素の高さと幅の影響をなくす（要素に高さと幅を含める）*/
   }
-  #bms_send_btn:hover {
-      background: #13178E; /*マウスポインタを当てた時にアクティブな色になる*/
-      cursor: pointer;/*マウスポインタを当てた時に、カーソルが指の形になる*/
+  .able {
+    background: #5bc8ac;
+  }
+  .disable {
+    background: #bcbcbc;
   }
   .notice-box {
       margin: 15px 15%;

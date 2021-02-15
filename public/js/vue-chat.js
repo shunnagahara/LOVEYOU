@@ -14,6 +14,16 @@ const app = new Vue({
                 return "-right";
             }
             return "-left";
+        },
+        changeButtonColor: function(textInput) {
+            if (textInput === "") {
+                return "disable";
+            }
+            return "able";
+        },
+        keyEnterShift(e) {
+            e.preventDefault();
+            this.sendMessage();
         }
     },
     mounted() {

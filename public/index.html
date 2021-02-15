@@ -2,6 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="#" />
     <base href="/">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
@@ -24,7 +25,7 @@
                     </div>
                     <div class="sb-side" :class="'sb-side' + addLeftOrRight(chat.name)">
                         <div class="sb-txt" :class="'sb-txt' + addLeftOrRight(chat.name)">
-                            {{ chat.text }}
+                            <p>{{ chat.text }}</p>
                         </div><!-- /.sb-txt -->
                     </div><!-- /.sb-side -->
                 </div><!-- /.sb-box -->
@@ -40,8 +41,12 @@
 
         <form action="">
             <div id="bms_send">
-                <textarea id="bms_send_message" v-model="textInput"></textarea>
-                <div id="bms_send_btn" v-on:click.prevent="sendMessage">送信</div>
+                <textarea id="bms_send_message" v-model="textInput" @keydown.enter.shift="keyEnterShift"></textarea>
+                <div id="bms_send_btn" :class="changeButtonColor(textInput)">
+                    <button v-bind:disabled="textInput === ''" v-on:click.prevent="sendMessage">
+                    送信
+                    </button>
+                </div>
             </div>
         </form>
 
