@@ -17,22 +17,27 @@
 
                 <!-- メッセージ系 -->
                 <div class="sb-box" v-if="chat.type === 'message'">
-                    <div class="icon-img" :class="'icon-img' + addLeftOrRight(chat.name)">
+                    <div class="icon-img" :class="'icon-img' + addLeftOrRight(chat.mine)">
                         <img src="img/ico_default_blue.png">
                     </div><!-- /.icon-img -->
-                    <div class="icon-name" :class="'icon-name' + addLeftOrRight(chat.name)">
+                    <div class="icon-name" :class="'icon-name' + addLeftOrRight(chat.mine)">
                         {{ chat.name }}
                     </div>
-                    <div class="sb-side" :class="'sb-side' + addLeftOrRight(chat.name)">
-                        <div class="sb-txt" :class="'sb-txt' + addLeftOrRight(chat.name)">
+                    <div class="sb-side" :class="'sb-side' + addLeftOrRight(chat.mine)">
+                        <div class="sb-txt" :class="'sb-txt' + addLeftOrRight(chat.mine)">
                             <p>{{ chat.text }}</p>
                         </div><!-- /.sb-txt -->
                     </div><!-- /.sb-side -->
                 </div><!-- /.sb-box -->
 
-                <!-- 通知系 -->
-                <div class="notice-box" v-if="chat.type === 'notice'">
-                    <p class="notice-txt">{{ chat.text }}</p>
+                <!-- 新規できた系 -->
+                <div class="notice-box" v-if="chat.type === 'newcomer'">
+                    <p class="notice-txt">{{ chat.name }}{{ chat.text }}</p>
+                </div>
+
+                <!-- 去った系 -->
+                <div class="notice-box" v-if="chat.type === 'left'">
+                    <p class="notice-txt">{{ chat.name }}{{ chat.text }}</p>
                 </div>
 
             </li>
@@ -55,6 +60,6 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="js/websocket.js"></script>
-    <script src="js/vue-chat.js"></script>
+    <script type="module" src="js/vue-chat.js"></script>
   </body>
 </html>

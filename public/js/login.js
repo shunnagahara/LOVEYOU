@@ -1,3 +1,6 @@
+
+const storage = sessionStorage;
+
 // 名前入力時の挙動
 window.addEventListener('DOMContentLoaded',function(){
     document.getElementById('Login-Btn').disabled = true;
@@ -19,5 +22,5 @@ window.addEventListener('DOMContentLoaded',function(){
 
 // ログインボタン押下時の挙動
 document.getElementById("Login-Btn").onclick = function() {
-    console.log(document.getElementById("Name-Input").value);
+    storage.setItem('name', document.getElementById("Name-Input").value);
 };
