@@ -11,14 +11,19 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
 
-    // socket.broadcast.emit('new comer', socket);
+    let nickName = ""; 
 
-    socket.on('new comer', function(cht){
-      socket.broadcast.emit("new comer", cht);　//送信元以外の全員に送信
+    socket.on('new comer', function(strNickname_){
+      nickName = strNickname_;
+      socket.broadcast.emit("new comer", nickName);
     });
 
-    socket.on('chat message', function(cht){
-      io.emit('chat message', cht);
+    socket.on('disconnect',function(){
+      socket.broadcast.emit("left", nickName);
+    })
+
+    socket.on('chat message', function(chat){
+      io.emit('chat message', chat);
     });
 });
 
