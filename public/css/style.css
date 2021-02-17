@@ -6,6 +6,7 @@
   .sb-box {
     position: relative;
     overflow: hidden;
+    margin-top: 10px;
   }
   /* アイコン画像 */
   .icon-img {
@@ -153,13 +154,21 @@
     background: #bcbcbc;
   }
   .notice-box {
-      margin: 15px 15%;
+      margin: 10px 15px 7%;
       border: solid 1px gray;
       border-radius: 20px;
   }
   .notice-txt {
       text-align: center;
       margin: 5px 0;
+  }
+
+  .display-none {
+    display: none;
+  }
+
+  .show {
+    display: block;
   }
 
   /* 767px（iPad）以下 */
@@ -182,7 +191,7 @@
     }
     /* 吹き出し（右） */
     .sb-side-right {
-      margin: 0 78px 30px 0; /* 吹き出し（右）の上下左右の余白を狭く */
+      margin: 0 78px 20px 0; /* 吹き出し（右）の上下左右の余白を狭く */
     }
     /* 吹き出し内のテキスト */
     .sb-txt {
