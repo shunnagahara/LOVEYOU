@@ -9,15 +9,16 @@
   </head>
   <body>
 
-    <h2 class="Title">きみとちゃっと</h2>
-
-    <div class="Form">
-      <form name="LoginForm" action="/index.html">
-          <div class="Form-Item">
-              <p class="Form-Item-Label"></span>なまえ</p>
-              <input type="text" id="Name-Input" class="Form-Item-Input" placeholder="例）あらがきゆい">
-          </div>
-          <input id="Login-Btn" type="submit" class="Form-Btn" value="ログイン">
+    <div class="form-wrapper">
+      <h1>ログイン</h1>
+      <form name="LoginForm" action="/index.html" autocomplete="off">
+        <div class="form-item">
+          <label for="email"></label>
+          <input id="Name-Input" type="text" placeholder="例）あらがきゆい"></input>
+        </div>
+        <div class="button-panel">
+          <input id="Login-Btn" type="submit" class="button form-button" value="ログイン"></input>
+        </div>
       </form>
     </div>
 

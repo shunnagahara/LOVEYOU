@@ -10,50 +10,51 @@
   </head>
   <body>
     <div id="app">
+        <div class="display-none" v-bind:class ={show:isShow}>
+            <!-- 吹き出しの始まり -->
+            <ul id="chats">
+                <li v-for="chat in chats">
 
-        <!-- 吹き出しの始まり -->
-        <ul id="chats">
-            <li v-for="chat in chats">
+                    <!-- メッセージ系 -->
+                    <div class="sb-box" v-if="chat.type === 'message'">
+                        <div class="icon-img" :class="'icon-img' + addLeftOrRight(chat.mine)">
+                            <img src="img/ico_default_blue.png">
+                        </div><!-- /.icon-img -->
+                        <div class="icon-name" :class="'icon-name' + addLeftOrRight(chat.mine)">
+                            {{ chat.name }}
+                        </div>
+                        <div class="sb-side" :class="'sb-side' + addLeftOrRight(chat.mine)">
+                            <div class="sb-txt" :class="'sb-txt' + addLeftOrRight(chat.mine)">
+                                <p>{{ chat.text }}</p>
+                            </div><!-- /.sb-txt -->
+                        </div><!-- /.sb-side -->
+                    </div><!-- /.sb-box -->
 
-                <!-- メッセージ系 -->
-                <div class="sb-box" v-if="chat.type === 'message'">
-                    <div class="icon-img" :class="'icon-img' + addLeftOrRight(chat.mine)">
-                        <img src="img/ico_default_blue.png">
-                    </div><!-- /.icon-img -->
-                    <div class="icon-name" :class="'icon-name' + addLeftOrRight(chat.mine)">
-                        {{ chat.name }}
+                    <!-- 新規できた系 -->
+                    <div class="notice-box" v-if="chat.type === 'newcomer'">
+                        <p class="notice-txt">{{ chat.name }}{{ chat.text }}</p>
                     </div>
-                    <div class="sb-side" :class="'sb-side' + addLeftOrRight(chat.mine)">
-                        <div class="sb-txt" :class="'sb-txt' + addLeftOrRight(chat.mine)">
-                            <p>{{ chat.text }}</p>
-                        </div><!-- /.sb-txt -->
-                    </div><!-- /.sb-side -->
-                </div><!-- /.sb-box -->
 
-                <!-- 新規できた系 -->
-                <div class="notice-box" v-if="chat.type === 'newcomer'">
-                    <p class="notice-txt">{{ chat.name }}{{ chat.text }}</p>
+                    <!-- 去った系 -->
+                    <div class="notice-box" v-if="chat.type === 'left'">
+                        <p class="notice-txt">{{ chat.name }}{{ chat.text }}</p>
+                    </div>
+
+                </li>
+            </ul>
+            <!-- 吹き出しの終わり -->
+
+            <form action="">
+                <div id="bms_send">
+                    <textarea id="bms_send_message" v-model="textInput" @keydown.enter.shift="keyEnterShift"></textarea>
+                    <div id="bms_send_btn" :class="changeButtonColor(textInput)">
+                        <button v-bind:disabled="textInput === ''" v-on:click.prevent="sendMessage">
+                        送信
+                        </button>
+                    </div>
                 </div>
-
-                <!-- 去った系 -->
-                <div class="notice-box" v-if="chat.type === 'left'">
-                    <p class="notice-txt">{{ chat.name }}{{ chat.text }}</p>
-                </div>
-
-            </li>
-        </ul>
-        <!-- 吹き出しの終わり -->
-
-        <form action="">
-            <div id="bms_send">
-                <textarea id="bms_send_message" v-model="textInput" @keydown.enter.shift="keyEnterShift"></textarea>
-                <div id="bms_send_btn" :class="changeButtonColor(textInput)">
-                    <button v-bind:disabled="textInput === ''" v-on:click.prevent="sendMessage">
-                    送信
-                    </button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
 
     </div>
 
