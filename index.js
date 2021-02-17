@@ -12,10 +12,12 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
 
     let nickName = ""; 
+    let uniqueId = ""; 
 
     socket.on('new comer', function(strNickname_){
       nickName = strNickname_;
-      socket.broadcast.emit("new comer", nickName);
+      uniqueId = socket.id;
+      socket.broadcast.emit("new comer", nickName, uniqueId);
     });
 
     socket.on('disconnect',function(){
