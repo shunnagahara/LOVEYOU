@@ -2,6 +2,9 @@
 import newComerNoticePhraseList from './newComerNoticePhrase.js'
 import leftNoticePhraseList from './leftNoticePhrase.js'
 
+const loveInterval = 3000;
+const storage = sessionStorage;
+
 const app = new Vue({
     el: '#app',
     data: {
@@ -9,14 +12,15 @@ const app = new Vue({
         textInput: '',
         chats: [],
         newComerNoticePhrase: newComerNoticePhraseList,
-        leftNoticePhrase: leftNoticePhraseList
+        leftNoticePhrase: leftNoticePhraseList,
+        isShow:false
     },
     methods: {
         sendMessage() {
             if (!this.textInput.match || !this.textInput.match(/\S/g)) {
                 return
             }
-            socket.emit('chat message', { type:'message', text:this.textInput, name:this.myName } );
+            socket.emit('chat message', { type:'message', text:this.textInput, name:this.myName} );
             this.textInput = '';
         },
         addLeftOrRight: function(mine) {
@@ -38,8 +42,6 @@ const app = new Vue({
         },
         checkLogin() {
 
-            const storage = sessionStorage;
-
             this.myName = storage.getItem('name');
 
             // ログイン画面を経由していない場合はログイン画面にリダイレクトさせる。
@@ -47,11 +49,29 @@ const app = new Vue({
                 location.href = '/login.html';
             }
 
+            // ログイン名が被っていないかチェック
+            socket.emit('check same name', this.myName);
+
+            socket.emit('new comer', this.myName);
+
+            this.isShow = true;
+        },
+        confession: function(){
+
+            let myName = storage.getItem('name');
+
             // SessionStorageの役目は果たした為、KV削除
             storage.clear();
 
-            socket.emit('new comer', this.myName);
-        }
+            setInterval(function(){
+
+                var randomNumber = Math.random();
+
+                if (randomNumber > 0.9) {
+                    socket.emit('love confession', { type:'message', text:this.textInput, name:myName} );
+                }
+            }, loveInterval);
+        },
     },
     mounted() {
 
@@ -72,9 +92,24 @@ const app = new Vue({
             }
         });
 
+        // チャットメッセージのやりとり
         socket.on('chat message', (chat) => {
             chat.name === this.myName ? chat.mine = true : chat.mine = false;
             this.chats.push(chat);
         });
+
+        // 告白メッセージ
+        socket.on('love confession', (chat) => {
+            chat.name === this.myName ? chat.mine = true : chat.mine = false;
+            this.chats.push(chat);
+        });
+
+        // 同名チェック
+        socket.on('check same name', (existSameName) => {
+            if (existSameName) location.href = '/login.html';
+        });
+
+        // 告白
+        this.confession();
     }
 });
