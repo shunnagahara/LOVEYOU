@@ -31,13 +31,17 @@
                     </div><!-- /.sb-box -->
 
                     <!-- 新規できた系 -->
-                    <div class="notice-box" v-if="chat.type === 'newcomer'">
-                        <p class="notice-txt">{{ chat.name }}{{ chat.text }}</p>
+                    <div>
+                        <div class="notice-box" v-if="chat.type === 'newcomer'">
+                            <p class="notice-txt">{{ chat.name }}{{ chat.text }}</p>
+                        </div>
                     </div>
 
                     <!-- 去った系 -->
-                    <div class="notice-box" v-if="chat.type === 'left'">
-                        <p class="notice-txt">{{ chat.name }}{{ chat.text }}</p>
+                    <div>
+                        <div class="notice-box" v-if="chat.type === 'left'">
+                            <p class="notice-txt">{{ chat.name }}{{ chat.text }}</p>
+                        </div>
                     </div>
 
                 </li>
