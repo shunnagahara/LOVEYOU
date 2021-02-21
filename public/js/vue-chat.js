@@ -106,7 +106,10 @@ const app = new Vue({
 
         // 同名チェック
         socket.on('check same name', (existSameName) => {
-            if (existSameName) location.href = '/login.html';
+            if (existSameName) {
+                storage.setItem('login-error', ['sameName']);
+                location.href = '/login.html';
+            }
         });
 
         // 告白
