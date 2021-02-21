@@ -2,6 +2,7 @@ const express = require('express');
 const app = require('express')();
 const server= require('http').Server(app);
 const io = require('socket.io')(server);
+const confessionPhrase = require('./confessionPhrase.js');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -54,7 +55,9 @@ io.on('connection', function(socket){
     // 告白
     socket.on('love confession', function(chat){
 
-      if (loginUsers.length < 1) return
+      console.log(loginUsers);
+
+      if (loginUsers.length > 1) return
 
       var confessedUsers = loginUsers.concat();
       var index = confessedUsers.indexOf(nickName);
@@ -65,7 +68,7 @@ io.on('connection', function(socket){
 
       var confessedUser = confessedUsers[Math.floor(Math.random() * confessedUsers.length)];
 
-      chat.text = confessedUser + 'さんだいすき';
+      chat.text = confessedUser + confessionPhrase[Math.floor(Math.random() * confessionPhrase.length)];
 
       io.emit('love confession', chat);
 
