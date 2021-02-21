@@ -97,3 +97,16 @@
   .form-button[disabled]{
     background:#DCDCDC;
   } 
+
+  .error-box {
+    display: none;
+    margin-top: 10px;
+  }
+
+  .error-text {
+    color: #fc2803;
+  }
+
+  .error-text.top {
+    margin-top: 10px;
+  }
