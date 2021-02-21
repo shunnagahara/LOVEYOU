@@ -57,7 +57,7 @@ io.on('connection', function(socket){
 
       console.log(loginUsers);
 
-      if (loginUsers.length > 1) return
+      if (loginUsers.length < 1) return
 
       var confessedUsers = loginUsers.concat();
       var index = confessedUsers.indexOf(nickName);
