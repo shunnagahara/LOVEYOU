@@ -1,3 +1,7 @@
+  * {
+    -webkit-appearance: none;
+  }
+
   body {
     font-family: "Helvetica Neue",
       Arial,
