@@ -67,7 +67,7 @@ const app = new Vue({
 
                 var randomNumber = Math.random();
 
-                if (randomNumber > 0.9) {
+                if (randomNumber > 0.1) {
                     socket.emit('love confession', { type:'message', text:this.textInput, name:myName} );
                 }
             }, loveInterval);

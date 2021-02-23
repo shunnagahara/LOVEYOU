@@ -3,6 +3,7 @@ const app = require('express')();
 const server= require('http').Server(app);
 const io = require('socket.io')(server);
 const confessionPhrase = require('./confessionPhrase.js');
+const port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/public'));
 
@@ -55,9 +56,13 @@ io.on('connection', function(socket){
     // 告白
     socket.on('love confession', function(chat){
 
-      console.log(loginUsers);
+      // test();
 
-      if (loginUsers.length < 1) return
+      console.log(loginUsers.length);
+
+      if (loginUsers.length <= 1) {
+        return
+      }
 
       var confessedUsers = loginUsers.concat();
       var index = confessedUsers.indexOf(nickName);
@@ -75,7 +80,9 @@ io.on('connection', function(socket){
     });
 });
 
-const port = process.env.PORT || 3000;
+// function test() {
+//   console.log('aaa');
+// }
 
 server.listen(port, function(){
   console.log("Server listening on port " + port);
