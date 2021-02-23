@@ -65,6 +65,7 @@ io.on('connection', function(socket){
       }
 
       var confessedUsers = loginUsers.concat();
+      confessedUsers.filter(Boolean);
       var index = confessedUsers.indexOf(nickName);
 
       if(index >= 0){
