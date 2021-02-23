@@ -6,28 +6,31 @@
     <link rel="shortcut icon" href="#" />
     <base href="/">
     <link rel="stylesheet" href="css/login/style.css">
-    <title>チャット画面</title>
+    <title>LOVE YOU</title>
   </head>
   <body>
-
-    <div class="form-wrapper">
-      <h1>ログイン</h1>
-      <form name="LoginForm" action="/index.html" autocomplete="off">
-        <div class="form-item">
-          <label for="email"></label>
-          <input id="Name-Input" type="text" maxlength='5' placeholder="例）がっきー（5文字までだよ）"></input>
-          <div class="error-box">
-            <p class="error-text top">同名のユーザーがいるみたい！</p>
-            <p class="error-text">名前かえてみよう！</p>
+    <canvas id="canvas"></canvas>
+    <section id="body">
+      <div class="form-wrapper">
+        <h1>LOVE YOU</h1>
+        <form name="LoginForm" action="/index.html" autocomplete="off">
+          <div class="form-item">
+            <label for="email"></label>
+            <input id="Name-Input" type="text" maxlength='5' placeholder="例）がっきー（5文字までだよ）"></input>
+            <div class="error-box">
+              <p class="error-text top">同名のユーザーがいるみたい！</p>
+              <p class="error-text">名前かえてみよう！</p>
+            </div>
           </div>
-        </div>
-        <div class="button-panel">
-          <input id="Login-Btn" type="submit" class="button form-button" value="ログイン"></input>
-        </div>
-      </form>
-    </div>
+          <div class="button-panel">
+            <input id="Login-Btn" type="submit" class="button form-button" value="ログイン"></input>
+          </div>
+        </form>
+      </div>
+    </section>
 
     <script src="js/login.js"></script>
+    <script src="js/login-backgroud-image.js"></script>
 
   </body>
 </html>

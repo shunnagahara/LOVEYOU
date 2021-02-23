@@ -24,7 +24,7 @@
   /* Form Layout */
   .form-wrapper {
     background: #fafafa;
-    margin: 3em auto;
+    margin: 10em auto;
     padding: 0 1em;
     max-width: 370px;
   }
@@ -113,4 +113,18 @@
 
   .error-text.top {
     margin-top: 10px;
+  }
+
+  #canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ff7a7a;
+  }
+
+  #body {
+    position:absolute;
+    width: 100%;
   }
