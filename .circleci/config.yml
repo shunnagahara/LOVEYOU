@@ -12,4 +12,3 @@ jobs:
       - checkout
       - heroku/install # Runs the heroku install command, if necessary.
       - heroku/deploy-via-git: # Deploys branch to Heroku via git push.
-          only-branch: main # If you specify an only-branch, the deploy will not occur for any other branch.
