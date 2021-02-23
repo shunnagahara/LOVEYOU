@@ -40,7 +40,7 @@ io.on('connection', function(socket){
       }
 
       socket.broadcast.emit("left", nickName);
-    })
+    });
 
     // 同名ユーザーチェック
     socket.on('check same name', function(myName){
@@ -56,9 +56,10 @@ io.on('connection', function(socket){
     // 告白
     socket.on('love confession', function(chat){
 
-      // test();
-
-      console.log(loginUsers.length);
+      // 電源OFFした場合、コネクションは切れずにサーバー側の変数が無くなるためにログイン画面に飛ばす。
+      if (!loginUsers.includes(chat.name)) {
+        io.to(socket.id).emit('byebye');
+      }
 
       if (loginUsers.length <= 1) {
         return

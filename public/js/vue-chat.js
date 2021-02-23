@@ -112,6 +112,10 @@ const app = new Vue({
             }
         });
 
+        socket.on('byebye', () => {
+            location.href = '/login.html';
+        });
+
         // 告白
         this.confession();
     }
