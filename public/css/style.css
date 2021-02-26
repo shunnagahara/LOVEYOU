@@ -2,6 +2,10 @@
     -webkit-appearance: none;
   }
 
+  html {
+    overflow-x: hidden;
+  }
+
   body {
     font-family: "Helvetica Neue",
       Arial,
@@ -186,6 +190,26 @@
     display: block;
   }
 
+  #canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ff7a7a;
+  }
+
+  #body {
+    position:absolute;
+    width: 100%;
+  }
+
+  #form {
+    width: 98%;
+    position: fixed;
+    bottom: 10px;
+  }
+
   /* 767px（iPad）以下 */
   
   @media (max-width: 767px) {
@@ -217,5 +241,8 @@
     }
     .notice-txt {
       font-size: 10px;
+    }
+    #form {
+      width: 94%;
     }
   }

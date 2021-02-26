@@ -10,6 +10,7 @@
     <title>チャット画面</title>
   </head>
   <body>
+    <canvas id="canvas"></canvas>
     <div id="app">
         <div class="display-none" v-bind:class ={show:isShow}>
             <!-- 吹き出しの始まり -->
@@ -49,7 +50,7 @@
             </ul>
             <!-- 吹き出しの終わり -->
 
-            <form action="">
+            <form action="" id="form">
                 <div id="bms_send">
                     <textarea id="bms_send_message" v-model="textInput" @keydown.enter.shift="keyEnterShift"></textarea>
                     <div id="bms_send_btn" :class="changeButtonColor(textInput)">
@@ -60,9 +61,9 @@
                 </div>
             </form>
         </div>
-
     </div>
 
+    <script src="js/login-backgroud-image.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="js/websocket.js"></script>
