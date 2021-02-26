@@ -3,6 +3,7 @@ import newComerNoticePhraseList from './newComerNoticePhrase.js'
 import leftNoticePhraseList from './leftNoticePhrase.js'
 
 const loveInterval = 3000;
+const confessionProbability = 0.9;
 const storage = sessionStorage;
 
 const app = new Vue({
@@ -67,7 +68,7 @@ const app = new Vue({
 
                 var randomNumber = Math.random();
 
-                if (randomNumber > 0.1) {
+                if (randomNumber > confessionProbability) {
                     socket.emit('love confession', { type:'message', text:this.textInput, name:myName} );
                 }
             }, loveInterval);
