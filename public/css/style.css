@@ -52,8 +52,8 @@
     width: 80px; /* ネームの最大幅を画像と同じに */
     text-align: center; /* ネームの位置をセンターに */
     top: 83px; /* ネームの位置を上から83に */
-    color: #777; /* ネームのカラー */
-    font-size: 10px; /* ネームのフォントサイズ */
+    color: #393b3a; /* ネームのカラー */
+    font-size: 12px; /* ネームのフォントサイズ */
   }
   /* アイコンネーム（左） */
   .icon-name-left {
@@ -171,10 +171,12 @@
     background: #bcbcbc;
   }
   .notice-box {
+      position: relative;
+      background-color: white;
       width: 55%;
       margin: 0 auto 30px;
       margin-top: 30px;
-      border: solid 3px #d6d6d6;
+      border: solid 3px #619eff;
       border-radius: 20px;
   }
   .notice-txt {
@@ -240,7 +242,7 @@
       width: 90%;
     }
     .notice-txt {
-      font-size: 10px;
+      font-size: 12px;
     }
     #form {
       width: 94%;
